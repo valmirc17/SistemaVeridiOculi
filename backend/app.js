@@ -6,6 +6,14 @@ app.use(cors())
 
 app.use(express.json())
 
-app.listen(3000,function(){
+// Conexão com o banco de dados
+
+const conn = require("./db/conn");
+
+conn();
+
+app.listen(3000, function(){
     console.log("Servidor iniciado com sucesso!")
 })
+
+// O3HDxV9VB0WX29IS
