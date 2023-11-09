@@ -11,3 +11,6 @@ Content-Type: application/json
   "dt_nasc": "01/01/1990",
   "dt_val_licenca": "01/01/2024"
 }
+
+###
+GET http://localhost:3000/api/users
