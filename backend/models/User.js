@@ -16,7 +16,7 @@ const userSchema = new Schema({
         required: true
     },
     cpf:{
-        type: String,
+        type: Number,
         required: true
     },
     email:{
@@ -24,15 +24,15 @@ const userSchema = new Schema({
         required: true
     },
     telefone:{
-        type: String,
+        type: Number,
         required: true
     },
     dt_nasc:{
-        type: String,
+        type: Date,
         required: true
     },
     dt_val_licenca:{
-        type: String,
+        type: Date,
         required: true
     },
 },
