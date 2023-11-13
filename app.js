@@ -32,7 +32,7 @@ app.get("/analise",function(req,res){
     res.render("analise")
 })
 
-app.listen(3000, function(){
+app.listen(80, function(){
     console.log("Servidor iniciado com sucesso!")
 })
 
