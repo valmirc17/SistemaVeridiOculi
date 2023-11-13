@@ -44,7 +44,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- ... (código existente) ... -->
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -71,22 +70,17 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    // Login bem-sucedido, redirecione para /home
                     window.location.href = '/home';
                 } else {
-                    // Exibe mensagem de erro
                     alert(data.msg);
                 }
             } catch (error) {
                 console.error('Erro durante o login:', error);
-                // Exibe uma mensagem de erro genérica
                 alert('Erro durante o login. Por favor, tente novamente.');
             }
         });
     });
 </script>
-
-<!-- ... (código existente) ... -->
 
 </body>
 </html>

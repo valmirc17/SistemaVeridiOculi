@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, send_file
-from flask_cors import CORS  # Importe a extensão
+from flask_cors import CORS
 from PIL import Image
 import io
 
 app = Flask(__name__, template_folder='views')
-CORS(app, resources={r"/rotacionar": {"origins": "http://localhost:3000"}})  # Adicione esta linha para configurar o CORS
+CORS(app, resources={r"/rotacionar": {"origins": "http://localhost:3000"}})
 
 @app.route('/')
 def index():

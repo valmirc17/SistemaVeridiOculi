@@ -11,7 +11,7 @@ const conn = require("./db/conn")
 
 conn();
 
-// Routes
+// Rotas
 const routes = require("./routes/router")
 
 app.use("/api", routes)
@@ -40,6 +40,3 @@ app.post('/api/login', userController.login);
 app.listen(3000, function(){
     console.log("Servidor iniciado com sucesso!")
 })
-
-
-// O3HDxV9VB0WX29IS
