@@ -81,7 +81,6 @@ const userController ={
         try {
             const id = req.params.id;
 
-            // Busca o usuário existente
             const existingUser = await UserModel.findById(id);
 
             if (!existingUser) {
@@ -98,13 +97,11 @@ const userController ={
             existingUser.dt_nasc = req.body.dt_nasc || existingUser.dt_nasc;
             existingUser.dt_val_licenca = req.body.dt_val_licenca || existingUser.dt_val_licenca;
 
-            // Se uma nova senha for fornecida, hash a nova senha
             if (req.body.senha) {
                 const hashedPassword = await bcrypt.hash(req.body.senha, 10);
                 existingUser.senha = hashedPassword;
             }
 
-            // Salva as alterações
             const updatedUser = await existingUser.save();
 
             res.status(200).json({ updatedUser, msg: 'Usuário atualizado com sucesso!' });
@@ -117,29 +114,28 @@ const userController ={
     login: async (req, res) => {
         try {
             const { login, senha } = req.body;
-
+    
             const user = await UserModel.findOne({ login });
-
+    
             if (!user) {
-                res.status(401).json({ msg: 'Usuário não encontrado.' });
-                return;
+                console.log('Usuário não encontrado.');
+                return res.status(400).send('Usuário não encontrado');
             }
-
-            const passwordMatch = await bcrypt.compare(senha.trim(), user.senha.trim());
-            console.log('Senha fornecida:', senha);
-            console.log('Senha armazenada no banco:', user.senha);
-            console.log('Comparação de senhas:', passwordMatch);
-            if (!passwordMatch) {
-                res.status(401).json({ msg: 'Senha incorreta.' });
-                return;
+    
+            const isPasswordMatch = await user.comparePassword(senha);
+    
+            if (isPasswordMatch) {
+                res.send('Login realizado com sucesso');
+            } else {
+                console.log('Senha incorreta.');
+                res.status(401).send('Usuário ou senha incorreta');
             }
-
-            res.status(200).json({ user, msg: 'Login bem-sucedido!' });
         } catch (error) {
             console.error('Erro durante o login:', error);
-            res.status(500).json({ msg: 'Erro durante o login. Por favor, tente novamente.' });
+            res.status(500).send('Erro durante o login. Por favor, tente novamente.');
         }
     },
+
 };
 
 module.exports = userController;

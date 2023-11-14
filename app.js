@@ -32,14 +32,6 @@ app.get("/analise",function(req,res){
     res.render("analise")
 })
 
-const userController = require('./controllers/userController');
-
-app.post('/api/login', userController.login);
-
-
 app.listen(3000, function(){
     console.log("Servidor iniciado com sucesso!")
 })
-
-
-// O3HDxV9VB0WX29IS

@@ -2,8 +2,8 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-  "nm_usuario": "teste",
-  "login": "teste",
+  "nm_usuario": "teste224",
+  "login": "teste224",
   "senha": "1234",
   "cpf": "50622588800",
   "email": "teste@email.com",
@@ -37,10 +37,10 @@ Content-Type: application/json
 }
 ###
 
-POST http://localhost:3000/api/login
+POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "login": "teste",
+  "login": "teste224",
   "senha": "1234"
 }
