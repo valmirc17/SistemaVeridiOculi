@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
-const {User: UserModel} = require("../models/User")
+const { User: UserModel } = require("../models/User")
 
-const userController ={
+const userController = {
     create: async (req, res) => {
         try {
             const {
@@ -37,42 +37,42 @@ const userController ={
         }
     },
 
-    getAll: async(req, res) =>{
-        try{
+    getAll: async (req, res) => {
+        try {
             const users = await UserModel.find()
             res.json(users)
-        } catch(error){
+        } catch (error) {
             console.log(error)
         }
     },
 
-    get: async(req, res) =>{
-        try{
+    get: async (req, res) => {
+        try {
             const id = req.params.id
             const user = await UserModel.findById(id)
-            if(!user){
-                res.status(404).json({msg: "Usuário não encontrado."})
+            if (!user) {
+                res.status(404).json({ msg: "Usuário não encontrado." })
                 return
             }
 
             res.json(user)
-        }catch(error){
+        } catch (error) {
             console.log(error)
         }
     },
 
-    delete: async(req, res) =>{
-        try{
+    delete: async (req, res) => {
+        try {
             const id = req.params.id
             const user = await UserModel.findById(id)
-            if(!user){
-                res.status(404).json({msg: "Usuário não encontrado."})
+            if (!user) {
+                res.status(404).json({ msg: "Usuário não encontrado." })
                 return
             }
 
             const deletedUser = await UserModel.findByIdAndDelete(id)
-            res.status(200).json({deletedUser, msg: "Usuário deletado com sucesso!"})
-        }catch(error){
+            res.status(200).json({ deletedUser, msg: "Usuário deletado com sucesso!" })
+        } catch (error) {
             console.log(error)
         }
     },
@@ -114,16 +114,16 @@ const userController ={
     login: async (req, res) => {
         try {
             const { login, senha } = req.body;
-    
+
             const user = await UserModel.findOne({ login });
-    
+
             if (!user) {
                 console.log('Usuário não encontrado.');
                 return res.status(400).send('Usuário não encontrado');
             }
-    
+
             const isPasswordMatch = await user.comparePassword(senha);
-    
+
             if (isPasswordMatch) {
                 res.send('Login realizado com sucesso');
             } else {

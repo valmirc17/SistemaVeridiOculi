@@ -1,43 +1,43 @@
 const mongoose = require("mongoose")
 const bcrypt = require('bcrypt');
 
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
 const userSchema = new Schema({
     nm_usuario: {
         type: String,
         required: true
     },
-    login:{
+    login: {
         type: String,
         required: true
     },
-    senha:{
+    senha: {
         type: String,
         required: true
     },
-    cpf:{
+    cpf: {
         type: Number,
         required: true
     },
-    email:{
+    email: {
         type: String,
         required: true
     },
-    telefone:{
+    telefone: {
         type: Number,
         required: true
     },
-    dt_nasc:{
+    dt_nasc: {
         type: Date,
         required: true
     },
-    dt_val_licenca:{
+    dt_val_licenca: {
         type: Date,
         required: true
     },
 },
-{timestamps: true}
+    { timestamps: true }
 );
 
 userSchema.methods.comparePassword = async function (password) {

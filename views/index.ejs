@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Veridi Oculi</title>
 </head>
+
 <body>
     <div class="container">
         <div class="content">
@@ -45,42 +47,47 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const loginForm = document.getElementById('login-form');
-        if(loginForm){
-            loginForm.addEventListener('submit', async function (event) {
-                event.preventDefault();
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginForm = document.getElementById('login-form');
 
-                const usernameInput = document.getElementById('username').value;
-                const passwordInput = document.getElementById('password').value;
+            if (loginForm) {
+                loginForm.addEventListener('submit', async function (event) {
+                    event.preventDefault();
 
-                try {
-                    const response = await fetch('/api/users/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            login: usernameInput,
-                            senha: passwordInput,
-                        }),
-                    });
+                    const usernameInput = document.getElementById('username').value;
+                    const passwordInput = document.getElementById('password').value;
 
-                    if (response.ok) {
-                        window.location.href = '/home';
-                    } else {
-                        const data = await response.text();
-                        alert(data);
+                    try {
+                        const response = await fetch('/api/users/login', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                login: usernameInput,
+                                senha: passwordInput,
+                            }),
+                        });
+
+                        if (response.ok) {
+                            // Login bem-sucedido, redirecione para /home
+                            window.location.href = '/home';
+                        } else {
+                            // Exibe mensagem de erro
+                            const errorMessage = await response.text() || 'Erro desconhecido';
+                            alert(errorMessage);
+                        }
+                    } catch (error) {
+                        console.error('Erro durante o login:', error);
+                        // Exibe uma mensagem de erro genérica
+                        alert('Erro durante o login. Por favor, tente novamente.');
                     }
-                } catch (error) {
-                    console.error('Erro durante o login:', error);
-                    alert('Erro durante o login. Por favor, tente novamente.');
-                }
-            });
-        };
-    });
-</script>
+                });
+            }
+        });
+    </script>
 
 </body>
+
 </html>
