@@ -120,7 +120,10 @@ a :hover{
     margin-top: 5px;
     margin-bottom: 45px;
 }
-
+input{
+    height: 190px;
+    width: 190px;
+}
 footer{
     display: flex;
     align-items: center;
