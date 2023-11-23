@@ -214,7 +214,10 @@ body.analise-page{
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
-
+input{
+    height: 190px;
+    width: 190px;
+}
 footer{
     display: flex;
     align-items: center;
