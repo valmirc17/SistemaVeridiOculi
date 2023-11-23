@@ -1,93 +1,31 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Veridi Oculi</title>
-</head>
-
-<body>
-    <div class="container">
+<%- include('partials/header.ejs') %>
+  <%- include('partials/navbar.ejs') %>
+    <body class="index-page">
+      <div class="container">
         <div class="content">
-            <div id="login-form" class="login-form">
-                <h2 class="mb-4 center-text">Login</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="username">Usuário</label>
-                        <input type="text" class="form-control" id="username" placeholder="Digite seu usuário">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Senha</label>
-                        <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
-                    </div>
-                    <div class="center-text">
-                        <button type="submit" class="btn btn-entrar">Entrar</button>
-                    </div>
-                    <div class="senha">
-                        <a href="#">Esqueceu sua senha?</a>
-                    </div>
-                    <div class="card">
-                        <div class="cont">
-                            <h4>Não possui uma conta?</h4>
-                            <p><a href="#">Cadastre-se</a> para ter acesso à análises avançadas!</p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="logo-container">
-                <img src="imgs/logo.png" class="logo">
-            </div>
+          <div class="title">
+            <h1>Análises com acurácia elevada, ajudando a identificar espécies raras com foco na preservação de
+              biomas.</h1>
+          </div>
+          <div class="text">
+            <p>As possibilidades de análise são diversas para o rastreamento de espécies em extinção.</p>
+          </div>
         </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <div class="content">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Faça sua primeira análise com o VeridiOculi</h5>
+                <p class="card-text">Junte-se a nossa plataforma</p>
+                <div class="gray-line"></div>
+            </div>
+            <a href="#" class="btn btn-primary"><strong>Cadastrar-se</strong><svg xmlns="http://www.w3.org/2000/svg"
+                style="height:1.5em; margin-left: 5px; fill:#fff" viewBox="0 0 512 512">
+                <path
+                  d="M352 96l64 0c17.7 0 32 14.3 32 32l0 256c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0c53 0 96-43 96-96l0-256c0-53-43-96-96-96l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32zm-9.4 182.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L242.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
+              </svg></a>
+          </div>
+        </div>
+      </div>
+    </body>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const loginForm = document.getElementById('login-form');
-
-            if (loginForm) {
-                loginForm.addEventListener('submit', async function (event) {
-                    event.preventDefault();
-
-                    const usernameInput = document.getElementById('username').value;
-                    const passwordInput = document.getElementById('password').value;
-
-                    try {
-                        const response = await fetch('/api/users/login', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                login: usernameInput,
-                                senha: passwordInput,
-                            }),
-                        });
-
-                        if (response.ok) {
-                            // Login bem-sucedido, redirecione para /home
-                            window.location.href = '/home';
-                        } else {
-                            // Exibe mensagem de erro
-                            const errorMessage = await response.text() || 'Erro desconhecido';
-                            alert(errorMessage);
-                        }
-                    } catch (error) {
-                        console.error('Erro durante o login:', error);
-                        // Exibe uma mensagem de erro genérica
-                        alert('Erro durante o login. Por favor, tente novamente.');
-                    }
-                });
-            }
-        });
-    </script>
-
-</body>
-
-</html>
+    <%- include ('partials/footer.ejs') %>

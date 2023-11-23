@@ -1,19 +1,25 @@
 <%- include('partials/header.ejs') %>
+    <%- include('partials/navbar-logged.ejs') %>
 
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="text">
-                    <h1>Laudos de flora a um clique</h1>
-                    <p>Identifique espécies em risco de extinção a partir de imagens aéreas.</p>
-                    <a href="/analise"></a>
+        <body class="home-page">
+            <div class="container">
+                <div class="content">
+                    <div class="title">
+                        <h1>Laudos de flora a um clique</h1>
+                    </div>
+                    <div class="text">
+                        <p>Identifique espécies em risco de extinção a partir de imagens aéreas.</p>
+                    </div>
                     <button type="submit" class="btn">Começar
                         <svg viewBox="0 0 512 512">
                             <style>
                                 svg {
-                                    fill: #2b750b;
+                                    fill: #ffffff;
                                     margin-left: 5px;
                                     height: 1.5em
+                                }
+                                svg:hover{
+                                    fill:black
                                 }
                             </style>
                             <path
@@ -21,7 +27,7 @@
                         </svg>
                     </button>
                 </div>
-                <div class="cards">
+                <div class="content">
                     <div class="card-01">
                         <img class="img" src="imgs/tela_diagnostico_detalhado_antigo.png" alt="">
                     </div>
@@ -33,5 +39,5 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </body>
         <%- include('partials/footer.ejs') %>
