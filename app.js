@@ -36,6 +36,10 @@ app.get("/login-old", function (req, res) {
     res.render("login_old")
 })
 
+app.get("/login", function (req, res) {
+    res.render("login")
+})
+
 app.get("/signup", (req, res) => {
     res.render("signup")
 })
