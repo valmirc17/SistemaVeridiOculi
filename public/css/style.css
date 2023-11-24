@@ -225,6 +225,32 @@ body.analise-page{
     flex-direction: column;
 }
 
+.frame-signup{
+    border-radius: 20px;
+    background-color:#ffffff;
+    width: 60%;
+    max-width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: row;
+}
+.center-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+}
+.left-signup, .right-signup{
+    width: 50%;
+    padding: 5%;
+}
+
+.right-signup{
+    margin-top: 45px;
+}
+
+
 .position{
     position: relative;
     display: flex;
@@ -244,7 +270,6 @@ body.analise-page{
     align-items: center;
     margin: 0;
     padding: 0;
-    width: 50%;
     height: 85%;
     flex-direction: column;
     justify-content: center;
@@ -256,8 +281,11 @@ body.analise-page{
     margin-left: 20px;
     align-items: center;
     justify-content: center;
-    width: 50%;
     height: 85%;
+}
+
+.left-login, .right-login{
+    width: 50%;
 }
 
 .btn-icon{
@@ -278,7 +306,7 @@ body.analise-page{
 }
 
 .input-container input {
-    width: 300px;
+    width: 100%;
     padding: 10px;
     border: none;
     border-bottom: 2px solid #ccc;
@@ -318,9 +346,9 @@ body.analise-page{
 .footer-login a{
     color:#fff;
 }
-
-
-
+.center-text a{
+    color:#000000;
+}
 
 footer{
     display: flex;

@@ -18,7 +18,6 @@ const userSchema = new Schema({
     },
     cpf: {
         type: Number,
-        required: true
     },
     email: {
         type: String,
@@ -30,11 +29,9 @@ const userSchema = new Schema({
     },
     dt_nasc: {
         type: Date,
-        required: true
     },
     dt_val_licenca: {
         type: Date,
-        required: true
     },
 },
     { timestamps: true }

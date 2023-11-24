@@ -32,53 +32,12 @@
                         </div>
                         <div class="footer-login">
                             <a href="">Esqueci minha senha</a>
-                            <a href="">|  Não tenho cadastro</a>
+                            <a href="signup">|  Não tenho cadastro</a>
                         </div> 
                     </div>
                 </div>
             </div>
         </body>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const loginForm = document.getElementById('login-form');
-                
-    
-                if (loginForm) { console.log("teste")
-                    loginForm.addEventListener('submit', async function (event) {
-                        event.preventDefault();
-    
-                        const usernameInput = document.getElementById('username').value;
-                        const passwordInput = document.getElementById('password').value;
-                        console.log(usernameInput,passwordInput)
-                        
-                        try {
-                            const response = await fetch('/api/users/login', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({
-                                    login: usernameInput,
-                                    senha: passwordInput,
-                                }),
-                            });
-    
-                            if (response.ok) {
-                                // Login bem-sucedido, redirecione para /home
-                                window.location.href = '/home';
-                            } else {
-                                // Exibe mensagem de erro
-                                const errorMessage = await response.text() || 'Erro desconhecido';
-                                alert(errorMessage);
-                            }
-                        } catch (error) {
-                            console.error('Erro durante o login:', error);
-                            // Exibe uma mensagem de erro genérica
-                            alert('Erro durante o login. Por favor, tente novamente.');
-                        }
-                    });
-                }
-            });
-        </script>
+        <script src="/js/login.js"></script>
     

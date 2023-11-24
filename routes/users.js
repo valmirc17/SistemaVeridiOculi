@@ -3,7 +3,7 @@ const router = require("express").Router()
 const userController = require("../controllers/userController")
 
 router
-    .route("/users")
+    .route("/users/")
     .post((req, res) => userController.create(req, res))
 
 router

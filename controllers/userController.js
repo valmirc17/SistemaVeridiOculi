@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const { User: UserModel } = require("../models/User")
 
 const userController = {
@@ -14,6 +14,7 @@ const userController = {
                 dt_nasc,
                 dt_val_licenca,
             } = req.body;
+            console.log(nm_usuario,login,senha,cpf,email,telefone,dt_nasc,dt_val_licenca)
 
             const hashedPassword = await bcrypt.hash(senha, 10);
 
