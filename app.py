@@ -1,10 +1,16 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, jsonify
 from flask_cors import CORS
+from pymongo import MongoClient
+from bson.binary import Binary
 from PIL import Image
-import io
+import os, io, uuid
 
 app = Flask(__name__, template_folder='views')
-CORS(app, resources={r"/rotacionar": {"origins": "http://localhost:3000"}})
+CORS(app, origins='http://localhost:3000')
+
+UPLOAD_FOLDER = 'static/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 @app.route('/')
 def index():
@@ -29,6 +35,24 @@ def rotacionar_imagem():
 
     # Retorna a imagem com os cabeçalhos adequados
     return send_file(img_buffer, mimetype='image/jpeg', as_attachment=True, download_name='imagem_rotacionada.jpg')
+
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'imagem' not in request.files:
+        return jsonify({'error': ''}), 400
+    
+    file = request.files['imagem']
+    
+    if file.filename == '':
+        return jsonify({'error': ''}), 400
+    
+    if file:
+        ext = file.filename.rsplit('.', 1)[1].lower()
+        random_filename = f"{uuid.uuid4()}.{ext}"
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], random_filename)
+        file.save(file_path)
+        return jsonify({'success': '', 'file_path': file_path}), 200
 
 @app.route('/imgs/<path:filename>')
 def servir_imagem(filename):

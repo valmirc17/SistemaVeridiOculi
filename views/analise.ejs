@@ -27,6 +27,7 @@
                 <div class="options">
                     <button class="btn" type="button" onclick="rotacionarImagem(21)">Ajustar norte magnético</button>
                     <button class="btn" type="button" onclick="rotacionarImagem(0)">Ajustar norte geográfico</button>
+                    <button class="btn" type="button" onclick="gravarImagem()">Salvar imagem</button>
                 </div>
             </div>
         </div>
@@ -62,6 +63,23 @@
                 })
                 .catch(error => console.error('Erro ao rotacionar a imagem:', error));
         }
+    function gravarImagem() {
+    let formData = new FormData();
+    formData.append('imagem', document.getElementById('input-file').files[0]);
+
+    fetch('http://localhost:5000/upload', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            if (response.ok) {
+                alert('Imagem gravada com sucesso!');
+            } else {
+                throw new Error('Erro ao gravar imagem');
+            }
+        })
+        .catch(error => console.error('Erro ao gravar a imagem:', error));
+    }
 
     </script>
     <%- include('partials/footer.ejs') %>
