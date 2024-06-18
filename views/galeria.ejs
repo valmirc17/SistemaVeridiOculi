@@ -1,0 +1,41 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar-logged.ejs') %>
+<body class="home-page">
+    <div class="container">
+        <div class="content-analise">
+            <div class="head">
+                <div class="title">
+                    <h1>Galeria de Imagens Rotacionadas</h1>
+                </div>
+                <div class="linha-verde"></div>
+            </div>
+            <div class="gallery">
+                <div id="gallery-content" class="gallery-content">
+                    <% imagens.forEach(function(imagem) { %>
+                        <img src="http://localhost:5000/imgs/<%= imagem %>" alt="<%= imagem %>" class="gallery-img">
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    .gallery-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+    .gallery-img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border: 2px solid #566F52;
+        border-radius: 5px;
+        transition: transform 0.2s;
+    }
+    .gallery-img:hover {
+        transform: scale(1.05);
+    }
+</style>
+<%- include('partials/footer.ejs') %>
