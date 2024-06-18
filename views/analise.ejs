@@ -53,18 +53,17 @@
         formData.append('imagem', document.getElementById('input-file').files[0]);
         formData.append('angulo', angulo);
 
-        fetch('http://localhost:5000/rotacionar', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.blob())
-            .then(blob => {
-                rotatedImageBlob = blob;
-                let imageUrl = URL.createObjectURL(blob);
-                document.getElementById('img_upload').src = imageUrl;
+            fetch('http://localhost:5000/rotacionar', {
+                method: 'POST',
+                body: formData
             })
-            .catch(error => console.error('Erro ao rotacionar a imagem:', error));
-    }
+                .then(response => response.blob())
+                .then(blob => {
+                    let imageUrl = URL.createObjectURL(blob);
+                    document.getElementById('img_upload').src = imageUrl;
+                })
+                .catch(error => console.error('Erro ao rotacionar a imagem:', error));
+        }
 
     function salvarImagem() {
         if (!rotatedImageBlob) {
